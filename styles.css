@@ -1,0 +1,636 @@
+:root {
+  --primary-1: #f44336;
+  --primary-2: #1e88e5;
+  --primary-3: #fdd835;
+  --border: #cdd9ed;
+  --border-hover: #99a3ba;
+  --text-color: #6c7486;
+  --text-color-headline: #3f4656;
+  --shadow: rgba(22, 30, 50, 0.04);
+}
+body {
+  font-family: 'Encode Sans';
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text-color);
+  background: #f5f9ff;
+}
+.form-field {
+  --color: var(--primary-1);
+  outline: none;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  border-radius: 6px;
+  transition: border 0.3s ease;
+}
+.form-field::placeholder {
+  color: var(--border-hover);
+}
+.form-field:focus {
+  outline: none;
+  border-color: var(--color);
+}
+.form-element {
+  margin-bottom: 20px;
+}
+.form-element label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: var(--text-color-headline);
+  font-weight: 500;
+}
+.iconList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.iconList li {
+  --color: var(--primary-1);
+  margin: 0 0 20px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.iconList li:last-child {
+  margin-bottom: 0;
+}
+.iconList li a {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+}
+.iconList li a .icon {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  margin-right: 12px;
+}
+.iconList li a .icon:before {
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+  background: var(--color);
+  opacity: 0.1;
+}
+.iconList li a .icon svg {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  fill: var(--color);
+  transform: translate(-50%, -50%);
+}
+.iconList li a .text {
+  color: var(--text-color-headline);
+  font-weight: 600;
+  font-size: 14px;
+}
+.iconList li a .text small {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.75;
+  color: var(--text-color);
+}
+.iconList li a > svg {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  fill: var(--border-hover);
+}
+.iconList li a:hover > svg {
+  transform: translateY(-50%) translateX(2px);
+}
+.radioGroup {
+  --color: var(--primary-1);
+  --border-width: 2px;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+}
+.radioGroup label {
+  cursor: pointer;
+}
+.radioGroup label input {
+  display: none;
+}
+.radioGroup label input + span {
+  display: block;
+  position: relative;
+  padding: 7px 20px;
+  border: var(--border-width) solid var(--border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.radioGroup label input:checked + span {
+  z-index: 2;
+  background: var(--color);
+  border-color: var(--color);
+  color: #fff;
+}
+.radioGroup label:hover input + span {
+  z-index: 1;
+  border-color: var(--color);
+}
+.radioGroup label:first-child input + span {
+  border-radius: 6px 0 0 6px;
+}
+.radioGroup label:last-child input + span {
+  border-radius: 0 6px 6px 0;
+}
+.radioGroup label:not(:first-child) {
+  margin-left: calc(var(--border-width) * -1);
+}
+.checkbox, .radio, .switch {
+  --color: var(--primary-1);
+  --border-hover: var(--primary-1);
+  --border-width: 2px;
+  margin: 0 0 12px 0;
+  display: table;
+  cursor: pointer;
+}
+.checkbox.inline, .radio.inline, .switch.inline {
+  margin: 0 12px 0 0;
+  display: inline-block;
+}
+.checkbox input, .radio input, .switch input {
+  display: none;
+}
+.checkbox input + span, .radio input + span, .switch input + span {
+  color: var(--text-color);
+  height: 22px;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  display: block;
+}
+.checkbox input + span:before, .radio input + span:before, .switch input + span:before, .checkbox input + span:after, .radio input + span:after, .switch input + span:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.checkbox input + span:before, .radio input + span:before, .switch input + span:before {
+  height: 22px;
+  border: var(--border-width) solid var(--border);
+  background: #fff;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.checkbox input + span:after, .radio input + span:after, .switch input + span:after {
+  transition: transform 0.3s ease, opacity 0.2s ease, background 0.2s ease;
+}
+.checkbox input:checked + span:before, .radio input:checked + span:before, .switch input:checked + span:before {
+  background: var(--color);
+  border-color: var(--color);
+}
+.checkbox input:checked + span:after, .radio input:checked + span:after, .switch input:checked + span:after {
+  transition: opacity 0.3s ease, background 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+}
+.checkbox:hover input:not(:checked) + span:before, .radio:hover input:not(:checked) + span:before, .switch:hover input:not(:checked) + span:before {
+  border-color: var(--border-hover);
+}
+.checkbox input + span, .radio input + span {
+  padding-left: 22px;
+}
+.checkbox input + span:not(:empty), .radio input + span:not(:empty) {
+  padding-left: 30px;
+}
+.checkbox input + span:before, .radio input + span:before {
+  width: 22px;
+}
+.checkbox input + span:after, .radio input + span:after {
+  opacity: 0;
+}
+.checkbox input:checked + span:after, .radio input:checked + span:after {
+  opacity: 1;
+}
+.checkbox input + span:before {
+  border-radius: 6px;
+}
+.checkbox input + span:after {
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  left: 8px;
+  top: 5px;
+  transform: rotate(20deg);
+}
+.checkbox input:checked + span:after {
+  transform: rotate(43deg) translate(1px, 0);
+}
+.radio input + span:before, .radio input + span:after {
+  border-radius: 50%;
+}
+.radio input + span:after {
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  opacity: 0;
+  transform: scale(0.6);
+}
+.radio input:checked + span:after {
+  background: #fff;
+  transform: scale(0.4);
+}
+.switch input + span {
+  padding-left: 38px;
+}
+.switch input + span:not(:empty) {
+  padding-left: 46px;
+}
+.switch input + span:before {
+  width: 38px;
+  border-radius: 11px;
+}
+.switch input + span:after {
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background: var(--border);
+}
+.switch input:checked + span:after {
+  background: #fff;
+  transform: translateX(16px) scale(0.9);
+}
+.switch:hover input:not(:checked) + span:after {
+  background: var(--border-hover);
+}
+.btn {
+  --color: var(--primary-1);
+  --text: #fff;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  position: relative;
+  white-space: nowrap;
+  border: none;
+  color: var(--text);
+  padding: 9px 24px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  background: var(--color);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn:link, .btn:active, .btn:visited, .btn:focus {
+  color: var(--text);
+}
+.btn svg {
+  position: relative;
+  left: -4px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: top;
+  font-weight: normal;
+  margin: 2px 0;
+  fill: var(--text);
+}
+.btn svg.right {
+  left: auto;
+  right: -4px;
+}
+.btn.icon {
+  padding: 9px;
+}
+.btn.icon svg {
+  left: auto;
+  right: auto;
+  display: block;
+  margin: 2px;
+}
+.btn.sm {
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 6px 16px;
+}
+.btn.sm.icon {
+  padding: 6px;
+}
+.btn.sm.icon svg {
+  margin: 3px;
+}
+.btn.sm svg {
+  width: 16px;
+  height: 16px;
+  margin: 3px 0;
+}
+.btn.border {
+  --text: var(--color);
+  background: none;
+}
+.btn.border:before {
+  content: '';
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 0;
+  border-radius: inherit;
+  transition: border-color 0.3s ease;
+  border: 1px solid var(--color);
+}
+h3 {
+  font-family: 'Encode Sans';
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-color-headline);
+  margin: 0 0 16px 0;
+}
+.container {
+  padding: 24px 0;
+  margin: 0 auto;
+}
+@media (min-width: 720px) {
+  .container {
+    padding: 32px 0;
+    max-width: 720px;
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (min-width: 1140px) {
+  .container {
+    padding: 48px 0;
+    max-width: 1100px;
+    display: grid;
+    grid-gap: 40px;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (min-width: 720px) {
+  .container .col {
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+  }
+  .container .col .box {
+    flex: 0 0 100%;
+  }
+}
+.container h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 22px;
+}
+.container h3 small {
+  color: var(--border-hover);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.container h3 small span {
+  display: block;
+  background: var(--primary-1);
+  color: #fff;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 18px;
+  border-radius: 9px;
+  padding: 0 8px;
+  margin: 0 4px 0 0;
+}
+.container .box {
+  max-width: 450px;
+  margin: 0 auto;
+}
+.container .box > div {
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow);
+  border: 1px solid var(--border);
+  margin: 0 0 40px 0;
+}
+.container .box > div .demo-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px 0;
+}
+.container .box > div .demo-toggle:last-child {
+  margin-bottom: 0;
+}
+.container .box > div .demo-toggle label {
+  flex: 0 0 50%;
+  display: block;
+  margin: 0;
+}
+.container .box > div .demo-button {
+  margin-bottom: 20px;
+}
+.container .box > div .demo-button:last-child {
+  margin-bottom: 0;
+}
+.container .box > div .demo-button .btn {
+  margin: 0 8px 0 0;
+}
+.container .box > div .demo-button .btn:last-child {
+  margin-right: 0;
+}
+.container .box > div .demo-color {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+  position: relative;
+}
+.container .box > div .demo-color:last-child {
+  margin-bottom: 0;
+}
+.container .box > div .demo-color .preview {
+  display: flex;
+  align-items: center;
+}
+.container .box > div .demo-color .preview > span {
+  --background: #000;
+  display: block;
+  width: 46px;
+  height: 46px;
+  flex-basis: 46px;
+  border-radius: 12px;
+  margin: 0 20px 0 0;
+  background: var(--background);
+}
+.container .box > div .demo-color .preview .edit strong {
+  font-weight: 600;
+  color: var(--text-color-headline);
+}
+.container .box > div .demo-color .preview .edit .input {
+  display: flex;
+}
+.container .box > div .demo-color .preview .edit .input input {
+  line-height: 22px;
+  padding: 0;
+  display: block;
+  border: 0;
+  background: none;
+}
+.container .box > div .demo-color .examples {
+  position: relative;
+}
+.container .box > div .demo-color .examples span {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  display: block;
+  z-index: 2;
+  position: relative;
+  transition: transform 0.3s ease, background 0.2s ease;
+}
+.container .box > div .demo-color .examples span i, .container .box > div .demo-color .examples span i:before {
+  width: 8px;
+  height: 8px;
+  background: var(--border);
+  display: block;
+  position: absolute;
+  border-radius: 2px;
+  transition: border-radius 0.2s ease, background 0.2s ease;
+}
+.container .box > div .demo-color .examples span i:before {
+  content: '';
+}
+.container .box > div .demo-color .examples span i:first-child {
+  left: 0;
+  top: 0;
+}
+.container .box > div .demo-color .examples span i:first-child:before {
+  top: 0;
+  left: 10px;
+}
+.container .box > div .demo-color .examples span i:last-child {
+  left: 0;
+  bottom: 0;
+}
+.container .box > div .demo-color .examples span i:last-child:before {
+  bottom: 0;
+  left: 10px;
+}
+.container .box > div .demo-color .examples div {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transform: scaleY(0.8);
+  transform-origin: 50% 0;
+  background: #fff;
+  z-index: 1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow);
+  border: 1px solid var(--border);
+  padding: 34px 8px 8px 8px;
+  top: -8px;
+  right: -8px;
+  width: 80px;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.3s cubic-bezier(0.4, 0.6, 0.5, 1.2);
+}
+.container .box > div .demo-color .examples div ul {
+  list-style: none;
+  display: grid;
+  grid-gap: 6px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 0 6px 0;
+  padding: 0 0 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.container .box > div .demo-color .examples div ul:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.container .box > div .demo-color .examples div ul li {
+  --color: #000;
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--color);
+  transition: transform 0.3s cubic-bezier(0.4, 0.6, 0.5, 1.2);
+}
+.container .box > div .demo-color .examples div ul li:hover {
+  transform: scale(0.9);
+}
+.container .box > div .demo-color .examples.open {
+  z-index: 3;
+}
+.container .box > div .demo-color .examples.open span {
+  background: var(--border);
+  transform: rotate(45deg) scale(0.8);
+}
+.container .box > div .demo-color .examples.open span i, .container .box > div .demo-color .examples.open span i:before {
+  border-radius: 0;
+  background: #fff;
+}
+.container .box > div .demo-color .examples.open div {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  min-height: 100vh;
+}
+body .dribbble {
+  position: fixed;
+  display: block;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+body .dribbble:hover {
+  opacity: 1;
+}
+body .dribbble img {
+  display: block;
+  height: 36px;
+}
+input:-moz-read-only { /* For Firefox */
+  background-color: #f3f6fa;
+}
+
+input:read-only {
+  background-color: #f3f6fa;
+}
