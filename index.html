@@ -62,6 +62,11 @@
 				document.getElementById('password').value = randomizedPassword;
 				document.getElementById('password-hash').value = HashPassword(randomizedPassword);
 			}
+			
+			// Update hash on text change
+			document.getElementById('password').addEventListener('input', function (evt) {
+				document.getElementById('password-hash').value = HashPassword(this.value);;
+			});
 		</script>
 
 	</body>
