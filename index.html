@@ -36,7 +36,7 @@
 
 		                <div class="form-element">
 		                    <label>Password Hash</label>
-		                    <input class="form-field" type="text" value="" placeholder="Password Hash" readonly/>
+		                    <input class="form-field" type="text" id="password-hash" value="" placeholder="Password Hash" readonly/>
 		                </div>
 
 		                
@@ -46,6 +46,12 @@
 
 		    </div>
 		</div>
+
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+    	<script src="js/php_functions.js"></script>
+    	<script src="js/pack.js"></script>
+    	<script src="js/md5.js"></script>
+    	<script src="js/hash.js"></script>
 
 		<script>
 			function randomPassword(length) {
@@ -59,8 +65,15 @@
 			}
 
 			function generateRandomPassword() {
-				document.getElementById('password').value = randomPassword(20);
+				var randomizedPassword = randomPassword(20);
+				document.getElementById('password').value = randomizedPassword;
+				document.getElementById('password-hash').value = HashPassword(randomizedPassword);
 			}
+
+			var pwd = 'admin';
+			var hash = HashPassword(pwd);
+			console.log(hash);
+			console.log(CheckPassword(pwd, hash));
 		</script>
 
 	</body>
