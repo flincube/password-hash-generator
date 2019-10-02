@@ -1,68 +1,90 @@
 <!-- Theme URL: https://codepen.io/aaroniker/pen/qLvXKy -->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Wordpress Password Hash Generator</title>
-		<link rel="stylesheet" href="styles.css">
-		<link href="https://fonts.googleapis.com/css?family=Encode+Sans:400,500,600,700" rel="stylesheet">
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wordpress Password Hash Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Encode+Sans:400,500,600,700"
+      rel="stylesheet"
+		/>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  </head>
 
-	<body>
-		<div class="container" id="app">
-		    <div class="col">
-		        <div class="box">
-		            <h3>Wordpress Password Generator</h3>
-		            <div>
-		            	<div class="demo-toggle">
-							<label class="radio">
-								<input type="radio" name="r" value="1" checked="">
-								<span>v3 or Later</span>
-							</label>
-							<label class="radio">
-								<input type="radio" name="r" value="2">
-								<span>Below v3</span>
-							</label>
-						</div>
+  <body>
+    <div class="container" id="app">
+      <div class="col">
+        <div class="box">
+          <h3>Wordpress Password Generator</h3>
+          <div>
+            <div class="demo-toggle">
+              <label class="radio">
+                <input type="radio" name="r" value="1" checked="" />
+                <span>v3 or Later</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="r" value="2" />
+                <span>Below v3</span>
+              </label>
+            </div>
 
-		                <div class="form-element">
-		                    <label>Password</label>
-		                    <input class="form-field" type="text" id="password" placeholder="Enter the Password">
-		                    <button class="btn" style="margin-top: 10px;" onclick="generateRandomPassword()">Generate Random Password</button>
-		                </div>
+            <div class="form-element">
+              <label>Password</label>
+              <input
+                class="form-field"
+                type="text"
+                id="password"
+                placeholder="Enter the Password"
+              />
+              <button
+                class="btn"
+                style="margin-top: 10px;"
+                onclick="generateRandomPassword()"
+              >
+                Generate Random Password
+              </button>
+            </div>
 
-		                <div class="form-element">
-		                    <label>Password Hash</label>
-		                    <input class="form-field" type="text" id="password-hash" value="" placeholder="Password Hash" readonly/>
-		                </div>
+            <div class="form-element">
+              <label>Password Hash</label>
+              <input
+                class="form-field"
+                type="text"
+                id="password-hash"
+                value=""
+                placeholder="Password Hash"
+                readonly
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		            </div>
-		        </div>
+    <script src="js/php_functions.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/hash.js"></script>
 
-		    </div>
-		</div>
+    <script>
+      function randomPassword(length) {
+        var chars =
+          'abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>£€ABCDEFGHIJKLMNOP1234567890éèêëçñøðåēčŭ';
+        var pass = '';
+        for (var x = 0; x < length; x++) {
+          var i = Math.floor(Math.random() * chars.length);
+          pass += chars.charAt(i);
+        }
+        return pass;
+      }
 
-    	<script src="js/php_functions.js"></script>
-    	<script src="js/md5.js"></script>
-    	<script src="js/hash.js"></script>
-
-		<script>
-			function randomPassword(length) {
-			    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>£€ABCDEFGHIJKLMNOP1234567890éèêëçñøðåēčŭ";
-			    var pass = "";
-			    for (var x = 0; x < length; x++) {
-			        var i = Math.floor(Math.random() * chars.length);
-			        pass += chars.charAt(i);
-			    }
-			    return pass;
-			}
-
-			function generateRandomPassword() {
-				var randomizedPassword = randomPassword(20);
-				document.getElementById('password').value = randomizedPassword;
-				document.getElementById('password-hash').value = HashPassword(randomizedPassword);
-			}
-		</script>
-
-	</body>
+      function generateRandomPassword() {
+        var randomizedPassword = randomPassword(20);
+        document.getElementById('password').value = randomizedPassword;
+        document.getElementById('password-hash').value = HashPassword(
+          randomizedPassword
+        );
+      }
+    </script>
+  </body>
 </html>
