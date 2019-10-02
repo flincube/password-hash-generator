@@ -23,30 +23,35 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
-		<style>
-			@media (min-width: 720px) {
-				  .container {
-				    grid-template-columns: repeat(2, 1fr);
-				  }
-				}
-				@media (min-width: 1140px) {
-				  .container {
-				 	grid-template-columns: repeat(3, 1fr);
-				  }
-				}
-		</style>
 	</head>
 
 	<body>
 		<div class="container" id="app">
 		    <div class="col">
 		        <div class="box">
-		            <h3>Wordpress password hash generator</h3>
-		            <div> 
-		            	<p>Wordpress password hash (v3, v4) for newest ones. Similar to Apache md5 crypt hashes. Easy way to reset Wordpress</p>
-		            	
-		            	<a href="wordpress.html"><button class="btn" style="margin-top: 10px;" >Wordpress Hash Generator</button></a>
-		            	
+		            <h3>Wordpress Password Generator</h3>
+		            <div>
+		            	<div class="demo-toggle">
+							<label class="radio">
+								<input type="radio" name="r" value="1" checked="">
+								<span>v3 or Later</span>
+							</label>
+							<label class="radio">
+								<input type="radio" name="r" value="2">
+								<span>Below v3</span>
+							</label>
+						</div>
+
+		                <div class="form-element">
+		                    <label>Password</label>
+		                    <input class="form-field" type="text" id="password" placeholder="Enter the Password">
+		                    <button class="btn" style="margin-top: 10px;" onclick="generateRandomPassword()">Generate Random Password</button>
+		                </div>
+
+		                <div class="form-element">
+		                    <label>Password Hash</label>
+		                    <input class="form-field" type="text" id="password-hash" value="" placeholder="Password Hash" readonly/>
+		                </div>
 
 		            </div>
 		        </div>
@@ -54,6 +59,27 @@
 		    </div>
 		</div>
 
-    	
+    	<script src="js/php_functions.js"></script>
+    	<script src="js/md5.js"></script>
+    	<script src="js/hash.js"></script>
+
+		<script>
+			function randomPassword(length) {
+			    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>£€ABCDEFGHIJKLMNOP1234567890éèêëçñøðåēčŭ";
+			    var pass = "";
+			    for (var x = 0; x < length; x++) {
+			        var i = Math.floor(Math.random() * chars.length);
+			        pass += chars.charAt(i);
+			    }
+			    return pass;
+			}
+
+			function generateRandomPassword() {
+				var randomizedPassword = randomPassword(20);
+				document.getElementById('password').value = randomizedPassword;
+				document.getElementById('password-hash').value = HashPassword(randomizedPassword);
+			}
+		</script>
+
 	</body>
 </html>
