@@ -43,17 +43,30 @@
 						</div>
 
 		                <div class="form-element">
-		                    <label>Password</label>
-		                    <input class="form-field" type="text" id="password" placeholder="Enter the Password">
+							<label>Password</label>
+							<div class='input-group'>
+								<input class="form-field" type="text" id="password" placeholder="Enter the Password">
+								<span class="input-group-button">
+									<button class="btn-copy" type="button" data-clipboard-action="copy" data-clipboard-target="#password">
+										<img class="clippy" src="assets/copy_icon.svg" width="15px" alt="Copy to clipboard">
+									</button>
+								</span>
+							</div>
 		                    <button class="btn" style="margin-top: 10px;" onclick="generateRandomPassword()">Generate Random Password</button>
 		                </div>
 
 		                <div class="form-element">
-		                    <label>Password Hash</label>
-		                    <input class="form-field" type="text" id="password-hash" value="" placeholder="Password Hash" readonly/>
-		                </div>
-
-		            </div>
+							<label>Password Hash</label>
+							<div class='input-group'>
+								<input class="form-field" type="text" id="password-hash" value="" placeholder="Password Hash" readonly/>
+								<span class="input-group-button">
+									<button class="btn-copy" type="button" data-clipboard-action="copy" data-clipboard-target="#password-hash">
+										<img class="clippy" src="assets/copy_icon.svg" width="15px" alt="Copy to clipboard">
+									</button>
+		
+								</span>
+		               		</div>
+		            	</div>
 		        </div>
 
 		    </div>
@@ -61,7 +74,8 @@
 
     	<script src="js/php_functions.js"></script>
     	<script src="js/md5.js"></script>
-    	<script src="js/hash.js"></script>
+		<script src="js/hash.js"></script>
+		<script src="js/clipboard.min.js"></script>
 
 		<script>
 			function randomPassword(length) {
@@ -79,6 +93,9 @@
 				document.getElementById('password').value = randomizedPassword;
 				document.getElementById('password-hash').value = HashPassword(randomizedPassword);
 			}
+
+			var btnClipboard = new ClipboardJS('.btn-copy');
+
 		</script>
 
 	</body>
