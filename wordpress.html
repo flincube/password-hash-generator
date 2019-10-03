@@ -43,10 +43,14 @@
 						</div>
 
 		                <div class="form-element">
-		                    <label>Password</label>
-		                    <input class="form-field" type="text" id="password" placeholder="Enter the Password">
-		                     <button class="btn" data-clipboard-action="copy" data-clipboard-target="#password">Copy</button>
-		                    <button class="btn" style="margin-top: 10px;" onclick="generateRandomPassword()">Generate Random Password</button>
+                        <label>Password</label>
+                        <div class="form-field-wrapper">
+                          <input class="form-field" type="text" id="password" placeholder="Enter the Password">
+                          <button class="copy-btn" data-clipboard-action="copy" data-clipboard-target="#password" title="Copy to clipboard">📋</button>
+                        </div>
+                        <div class="action-btns">
+                          <button class="btn" onclick="generateRandomPassword()">Generate Random Password</button>
+                        </div>
 		                </div>
 
 		                <div class="form-element">
@@ -85,7 +89,7 @@
 
     <!-- 3. Instantiate clipboard -->
     	<script>
-    		var clipboard = new ClipboardJS('.btn');
+    		var clipboard = new ClipboardJS('.copy-btn');
 		</script>
 
 	</body>
