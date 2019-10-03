@@ -23,60 +23,42 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
-		<style>
-			@media (min-width: 720px) {
-				  .container {
-				    grid-template-columns: repeat(2, 1fr);
-				  }
-				}
-				@media (min-width: 1140px) {
-				  .container {
-				 	grid-template-columns: repeat(3, 1fr);
-				  }
-				}
-		</style>
 	</head>
 
 	<body>
 		<div class="container" id="app">
 		    <div class="col">
 		        <div class="box">
-		            <h3>Wordpress password hash generator</h3>
-		            <div> 
-		            	<p>Wordpress password hash (v3, v4) for newest ones. Similar to Apache md5 crypt hashes. Easy way to reset Wordpress</p>
-		            	
-		            	<a href="wordpress.html"><button class="btn" style="margin-top: 10px;" >Wordpress Hash Generator</button></a>
-		            	
+		            <h3>Wordpress Password Generator</h3>
+		            <div>
+		            	<div class="demo-toggle">
+							<label class="radio">
+								<input type="radio" name="r" value="1" checked="">
+								<span>v3 or Later</span>
+							</label>
+							<label class="radio">
+								<input type="radio" name="r" value="2">
+								<span>Below v3</span>
+							</label>
+						</div>
+
+		                <div class="form-element">
+		                    <label>Password</label>
+		                    <input class="form-field" type="text" id="password" placeholder="Enter the Password">
+		                     <button class="btn" data-clipboard-action="copy" data-clipboard-target="#password">Copy</button>
+		                    <button class="btn" style="margin-top: 10px;" onclick="generateRandomPassword()">Generate Random Password</button>
+		                </div>
+
+		                <div class="form-element">
+		                    <label>Password Hash</label>
+		                    <input class="form-field" type="text" id="password-hash" value="" placeholder="Password Hash" readonly/>
+		                </div>
 
 		            </div>
 		        </div>
-		    </div>
-		    <div class="col">
-		        <div class="box">
-		            <h3>SHA1 password hash generator</h3>
-		            <div> 
-		            	<p>SHA1 password hash is 40 characters long hexadecimal string and more difficult to reverse than md5. Mainly used for custom authentication methods in non open source CMS / CRM engines. Reversing difficulty 5/10 (brute force + dictionary attack). Click to reset / change SHA1 password</p>
-		            	
-		            	<a href=""><button class="btn" style="margin-top: 10px;" >MD5 Generator</button></a>
-		            	
 
-		            </div>
-		        </div>
-		    </div>
-		    <div class="col">
-		        <div class="box">
-		            <h3>MD5 password hash generator</h3>
-		            <div> 
-		            	<p>MD5 password hash generator. MD5 hash is 32 characters long hexadecimal string. Widely used for admin passwords like as older version of Wordpress and Drupal and for custom CMS. Reversing difficulty 4/10 (brute force + dictionary attack). Click to reset / change MD5 password</p>
-		            	
-		            	<a href=""><button class="btn" style="margin-top: 10px;" >SHA1 Generator</button></a>
-		            	
-
-		            </div>
-		        </div>
 		    </div>
 		</div>
-
 
     	<script src="js/php_functions.js"></script>
     	<script src="js/md5.js"></script>
@@ -98,11 +80,13 @@
 				document.getElementById('password').value = randomizedPassword;
 				document.getElementById('password-hash').value = HashPassword(randomizedPassword);
 			}
-			
-			// Update hash on text change
-			document.getElementById('password').addEventListener('input', function (evt) {
-				document.getElementById('password-hash').value = HashPassword(this.value);
-			});
 		</script>
+		<script src="js/clipboard.min.js"></script>
+
+    <!-- 3. Instantiate clipboard -->
+    	<script>
+    		var clipboard = new ClipboardJS('.btn');
+		</script>
+
 	</body>
 </html>
