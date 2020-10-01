@@ -15,11 +15,57 @@ body {
   color: var(--text-color);
   background: #f5f9ff;
 }
+.clippy {
+  margin-top: -3px;
+  position: relative;
+  top: 3px;
+}
+.input-group-button {
+  width: 1%;
+  vertical-align: middle;
+}
+.input-group-button:last-child .btn-copy {
+  margin-left: -2px;
+}
+.input-group input, .input-group-button {
+  display: table-cell;
+}
+.input-group {
+  display: table;
+}
+.input-group input:first-child, .input-group-button:first-child .btn-copy {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group input {
+  position: relative;
+  width: 100%;
+}
+.btn-copy {
+  position: relative;
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: -1px;
+    line-height: 22px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #eee;
+    background-image: linear-gradient(#fcfcfc,#eee);
+    border: 1px solid var(--border);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+
+}
 .form-field {
   --color: var(--primary-1);
   outline: none;
-  display: block;
-  width: 100%;
   -webkit-appearance: none;
   background: #fff;
   border: 1px solid var(--border);
@@ -28,8 +74,13 @@ body {
   font-size: 14px;
   font-weight: 500;
   color: var(--text-color);
-  border-radius: 6px;
+  border-radius: 6px 0 0 6px;
   transition: border 0.3s ease;
+  margin: -1px;
+}
+
+img {
+  border: 0;
 }
 .form-field::placeholder {
   color: var(--border-hover);
