@@ -1,5 +1,4 @@
 <!-- Theme URL: https://codepen.io/aaroniker/pen/qLvXKy -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,45 +6,78 @@
 		<title>Wordpress Password Hash Generator</title>
 		<link rel="stylesheet" href="styles.css">
 		<link href="https://fonts.googleapis.com/css?family=Encode+Sans:400,500,600,700" rel="stylesheet">
+		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+		<link rel="manifest" href="favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			@media (min-width: 720px) {
+				  .container {
+				    grid-template-columns: repeat(2, 1fr);
+				  }
+				}
+				@media (min-width: 1140px) {
+				  .container {
+				 	grid-template-columns: repeat(3, 1fr);
+				  }
+				}
+		</style>
 	</head>
 
 	<body>
 		<div class="container" id="app">
 		    <div class="col">
-
 		        <div class="box">
-		            <h3>Wordpress Password Generator</h3>
+		            <h3>Wordpress password hash generator</h3>
 		            <div>
-		            	<div class="demo-toggle">
-							<label class="radio">
-								<input type="radio" name="r" value="1" checked="">
-								<span>v3 or Later</span>
-							</label>
-							<label class="radio">
-								<input type="radio" name="r" value="2">
-								<span>Below v3</span>
-							</label>
-						</div>
+		            	<p>Wordpress password hash (v3, v4) for newest ones. Similar to Apache md5 crypt hashes. Easy way to reset Wordpress</p>
 
-		                <div class="form-element">
-		                    <label>Password</label>
-		                    <input class="form-field" type="text" placeholder="Enter the Password">
-		                    <button class="btn" style="margin-top: 10px;">Generate Random Password</button>
-		                </div>
+		            	<a href="wordpress.html"><button class="btn" style="margin-top: 10px;" >Wordpress Hash Generator</button></a>
 
-
-		                <div class="form-element">
-		                    <label>Password Hash</label>
-		                    <input class="form-field" type="text" value="" placeholder="Password Hash" readonly/>
-		                </div>
-
-		                
 
 		            </div>
 		        </div>
+		    </div>
+		    <div class="col">
+		        <div class="box">
+		            <h3>SHA1 password hash generator</h3>
+		            <div>
+		            	<p>SHA1 password hash is 40 characters long hexadecimal string and more difficult to reverse than md5. Mainly used for custom authentication methods in non open source CMS / CRM engines. Reversing difficulty 5/10 (brute force + dictionary attack). Click to reset / change SHA1 password</p>
 
+		            	<a href=""><button class="btn" style="margin-top: 10px;" >MD5 Generator</button></a>
+
+
+		            </div>
+		        </div>
+		    </div>
+		    <div class="col">
+		        <div class="box">
+		            <h3>MD5 password hash generator</h3>
+		            <div>
+		            	<p>MD5 password hash generator. MD5 hash is 32 characters long hexadecimal string. Widely used for admin passwords like as older version of Wordpress and Drupal and for custom CMS. Reversing difficulty 4/10 (brute force + dictionary attack). Click to reset / change MD5 password</p>
+
+		            	<a href=""><button class="btn" style="margin-top: 10px;" >SHA1 Generator</button></a>
+
+
+		            </div>
+		        </div>
 		    </div>
 		</div>
+
 
 	</body>
 </html>

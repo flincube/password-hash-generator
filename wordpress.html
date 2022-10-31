@@ -1,0 +1,110 @@
+<!-- Theme URL: https://codepen.io/aaroniker/pen/qLvXKy -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Wordpress Password Hash Generator</title>
+		<link rel="stylesheet" href="styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Encode+Sans:400,500,600,700" rel="stylesheet">
+		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+		<link rel="manifest" href="favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="col">
+            <div class="box">
+                <h3>Wordpress Password Generator</h3>
+                <div>
+                    <div class="demo-toggle">
+                        <label class="radio">
+                            <input type="radio" name="r" value="1" checked="">
+                            <span>v3 or Later</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="r" value="2">
+                            <span>Below v3</span>
+                        </label>
+                    </div>
+
+                    <div class="form-element">
+                        <label>Password</label>
+                        <div class='input-group'>
+                            <input class="form-field" type="text" id="password" placeholder="Enter the Password">
+                            <span class="input-group-button">
+                                <button class="btn-copy" type="button" data-clipboard-action="copy"
+                                    data-clipboard-target="#password">
+                                    <img class="clippy" src="assets/copy_icon.svg" width="15px" alt="Copy to clipboard">
+                                </button>
+                            </span>
+                        </div>
+                        <button class="btn" style="margin-top: 10px;" onclick="generateRandomPassword()">
+                            Generate Random Password
+                        </button>
+                    </div>
+
+                    <div class="form-element">
+                        <label>Password Hash</label>
+                        <div class='input-group'>
+                            <input class="form-field" type="text" id="password-hash" value=""
+                                placeholder="Password Hash" readonly />
+                            <span class="input-group-button">
+                                <button class="btn-copy" type="button" data-clipboard-action="copy"
+                                    data-clipboard-target="#password-hash">
+                                    <img class="clippy" src="assets/copy_icon.svg" width="15px" alt="Copy to clipboard">
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/php_functions.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/hash.js"></script>
+
+        <script>
+            function randomPassword(length) {
+                var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>£€ABCDEFGHIJKLMNOP1234567890éèêëçñøðåēčŭ";
+                var pass = "";
+                for (var x = 0; x < length; x++) {
+                    var i = Math.floor(Math.random() * chars.length);
+                    pass += chars.charAt(i);
+                }
+                return pass;
+            }
+
+            function generateRandomPassword() {
+                var randomizedPassword = randomPassword(20);
+                document.getElementById('password').value = randomizedPassword;
+                document.getElementById('password-hash').value = HashPassword(randomizedPassword);
+            }
+
+        </script>
+        <script src="js/clipboard.min.js"></script>
+
+        <!-- 3. Instantiate clipboard -->
+        <script>
+            var clipboard = new ClipboardJS('.btn-copy');
+        </script>
+
+</body>
+
+</html>
