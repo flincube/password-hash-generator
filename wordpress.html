@@ -46,7 +46,7 @@
                     <div class="form-element">
                         <label>Password</label>
                         <div class='input-group'>
-                            <input class="form-field" type="text" id="password" placeholder="Enter the Password">
+                            <input class="form-field" type="text" id="password" placeholder="Enter the Password" oninput="updateHash()">
                             <span class="input-group-button">
                                 <button class="btn-copy" type="button" data-clipboard-action="copy"
                                     data-clipboard-target="#password">
@@ -95,6 +95,10 @@
                 var randomizedPassword = randomPassword(20);
                 document.getElementById('password').value = randomizedPassword;
                 document.getElementById('password-hash').value = HashPassword(randomizedPassword);
+            }
+
+            function updateHash() {
+                document.getElementById('password-hash').value = HashPassword(document.getElementById('password').value);
             }
 
         </script>
